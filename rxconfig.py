@@ -1,5 +1,9 @@
 import reflex as rx
 
 config = rx.Config(
-    app_name="ejercitoaf",
+    app_name="Ejercito American Force",
+    cors_allowed_origins=[
+        "http://localhost:3000"
+        "https://americanforce-web.vercel.app/"
+    ]
 )
