@@ -59,7 +59,7 @@ pytz==2024.1
 readme_renderer==43.0
 realtime==1.0.6
 redis==5.0.7
-reflex==0.5.5
+reflex==0.5.7
 reflex-hosting-cli==0.1.13
 requests==2.32.3
 requests-toolbelt==1.0.0
