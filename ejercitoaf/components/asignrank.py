@@ -1,16 +1,8 @@
 import reflex as rx
-from ejercitoaf.state.registerState import RegistroState
+from typing import List, Dict, Any
 
-class FamilyState(rx.State):
-    username: str = ""
-    password: str = ""
 
-    def submit(self, form_data: dict):
-        self.username = form_data.get("username", "")
-        self.password = form_data.get("password", "")
-        return RegistroState.registrar_family(self.username, self.password)
-
-def family_form():
+def asignar_rank(rank: Dict[str, Any]):
     return rx.center(
         rx.form(
             rx.vstack(
@@ -34,9 +26,11 @@ def family_form():
                 ),
                 spacing="4",
                 padding="2em",
-                border="2px solid blue",
-                border_radius="10px",
-                box_shadow="lg",
+                border="4px solid",
+                border_color=rx.color("blue", 5),
+                border_radius="1em",
+                box_shadow=f"0 4px 6px {rx.color('blue', 11)}",
+                width="300px",
             ),
             on_submit=FamilyState.submit,
         )

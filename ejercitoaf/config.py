@@ -149,8 +149,7 @@ class SupabaseDB:
     ### Users Times
     def get_Times(self, userID: int):
         try:
-            db = SupabaseDB()
-            data = db.supabase.table("DaysTime").select("*").eq("user_id", userID).execute()
+            data = self.supabase.table("DaysTime").select("*").eq("user_id", userID).execute()
             if data.data:
                 return data.data  # Esto ya es una lista de diccionarios
             else:
@@ -158,7 +157,23 @@ class SupabaseDB:
         except Exception as e:
             print(f"Error: {e}")
             return None
-            
+        
+    def get_ranksList(self):
+        try:
+            data = self.supabase.table("Rank").select("*").execute()
+            if data.data:
+                return data.data  # Esto ya es una lista de diccionarios
+            else:
+                return None
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
+    
+    def update_rank(self, hb_user, rank_id: int):
+        response = self.supabase.table("Users").update({
+            "rank": int(rank_id),
+        }).eq("username", hb_user).execute()
+
             
 
 
@@ -214,7 +229,6 @@ class SupabaseDB:
             "total_time": total_time_str
         }).eq("user_hb", username).execute()
 
-        print(response.data)
         return response.data
 
 
